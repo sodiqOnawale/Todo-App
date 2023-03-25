@@ -1,0 +1,11 @@
+.todo-list {
+    min-width: 21rem;
+    margin-top: 10px;
+    border: 1px solid #a19d9d;
+}
+
+.todo-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
