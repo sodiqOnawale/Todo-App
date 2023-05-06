@@ -2,21 +2,30 @@ import React from "react";
 import DeleteTodoLogo from "../DeleteTodo/DeleteTodoLogo";
 import './TodoList.css'
 
-function TodoLists({ items, handleRemoveTodo }) {
-    function removeTodo() {
-        handleRemoveTodo(items)
-    }
+function TodoLists({todoItems, handleRemoveTodo, handleChecked }) {
     return (
-        <div className="todo-list">
-            <div className="todo-item">
-                <input type="checkbox"></input>
-                <span>{items}</span>
-                <span onClick={removeTodo}>
-                    <DeleteTodoLogo />
-                </span>
-            </div>
-        </div>
+        <ul className="todo-list">
+                {
+                    todoItems.map(todoItem => {
+                        return (
+                            <li key={todoItem.id} className="todo-item">
+                                <input
+                                    type="checkbox"
+                                    checked={todoItem.checked}
+                                    onChange={e => {
+                                        handleChecked(todoItem.id, e.target.checked)
+                                    }}
+                                />
+                                {todoItem.checked ? <s>{todoItem.inputValue}</s> : <span>{todoItem.inputValue}</span>}
+                                <span onClick={() => handleRemoveTodo(todoItem)} className="deleteTodo" >
+                                    <DeleteTodoLogo />
+                                </span>
+                            </li>
+                        )
+                    })
+                }     
+        </ul>
     )
 }
 
-export default TodoLists
+export default TodoLists;

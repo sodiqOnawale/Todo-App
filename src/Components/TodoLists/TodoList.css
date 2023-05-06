@@ -1,11 +1,16 @@
 .todo-list {
     min-width: 21rem;
-    margin-top: 10px;
-    border: 1px solid #a19d9d;
+    padding: unset;
 }
 
 .todo-item {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    border: 1px solid #a19d9d;
+    padding: 4px;
+}
+
+.deleteTodo:hover {
+    cursor: pointer;
 }

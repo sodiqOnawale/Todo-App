@@ -4,10 +4,6 @@ import "./TodoInput.css"
 function TodoInput({ handleTodoItems }) {
     const [inputValue, setInputValue] = useState('')
 
-    function handleInputChange(event) {
-        setInputValue(event.target.value)
-    }
-
     function handleSubmit(event) {
         event.preventDefault()
         setInputValue('')
@@ -20,11 +16,10 @@ function TodoInput({ handleTodoItems }) {
                 <input
                     className="todo-input"
                     value={inputValue}
-                    onChange={handleInputChange}
+                    onChange={e => setInputValue(e.target.value)}
                     placeholder="What needs to be done?"
                 />
-            </form>
-            
+            </form>        
         </div>
     )
 }
