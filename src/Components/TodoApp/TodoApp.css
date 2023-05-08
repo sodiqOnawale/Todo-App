@@ -9,6 +9,10 @@
   color: white;
 }
 
+div {
+  min-width: 20rem
+}
+
 header {
   padding: 10px;
 }

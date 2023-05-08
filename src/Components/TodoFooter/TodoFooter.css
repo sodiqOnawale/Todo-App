@@ -1,0 +1,14 @@
+.todo-footer {
+    font-size: initial;
+}
+
+.todo-footer-action2 {
+    display: flex;
+    justify-content: space-around;
+}
+
+.filter-button.is-checked {
+    background-color: blue;
+    color: white;
+    border: none;
+}

@@ -17,13 +17,13 @@ function TodoLists({todoItems, handleRemoveTodo, handleChecked }) {
                                     }}
                                 />
                                 {todoItem.checked ? <s>{todoItem.inputValue}</s> : <span>{todoItem.inputValue}</span>}
-                                <span onClick={() => handleRemoveTodo(todoItem)} className="deleteTodo" >
+                                <span onClick={() => handleRemoveTodo(todoItem)} className="deleteTodo">
                                     <DeleteTodoLogo />
                                 </span>
                             </li>
                         )
                     })
-                }     
+                }
         </ul>
     )
 }
