@@ -25,7 +25,6 @@ function TodoApp() {
                     id: nextId++,
                 },
             ]);
-            console.log(todoItems)
             localStorage.setItem('items', JSON.stringify(
                 [
                     ...todoItems,
@@ -49,18 +48,18 @@ function TodoApp() {
         setTodoItems(
             todoItems.map((todoItem) => {
                 if (todoItem.id === itemID) {
-                return { ...todoItem, checked: nextCheck };
+                    return { ...todoItem, checked: nextCheck };
                 } else {
-                return todoItem;
+                    return todoItem;
                 }
             })
         );
         localStorage.setItem('items', JSON.stringify(
             todoItems.map((todoItem) => {
                 if (todoItem.id === itemID) {
-                return { ...todoItem, checked: nextCheck };
+                    return { ...todoItem, checked: nextCheck };
                 } else {
-                return todoItem;
+                    return todoItem;
                 }
             })
         ));      
