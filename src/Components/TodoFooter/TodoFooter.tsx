@@ -1,5 +1,15 @@
 import React from "react";
 import './TodoFooter.css'
+import { TodoItem } from "../TodoApp/TodoApp";
+
+interface TodoFooterProps {
+    todoItems: TodoItem[],
+    handleCompletedTodo: () => void,
+    handleActiveTodo: () => void,
+    handleAllTodo: () => void,
+    isChecked: boolean
+    handleClearCompletedTodo: () => void
+}
 
 function TodoFooter({   
                         todoItems,
@@ -8,7 +18,7 @@ function TodoFooter({
                         handleAllTodo, 
                         isChecked, 
                         handleClearCompletedTodo 
-                    }) {
+                    }: TodoFooterProps) {
     let count = 0;
     todoItems.map(item => item.checked === false ? count++ : count)
 

@@ -1,12 +1,19 @@
 import React from "react";
 import DeleteTodoLogo from "../DeleteTodo/DeleteTodoLogo";
 import './TodoList.css'
+import { TodoItem } from "../TodoApp/TodoApp";
 
-function TodoLists({todoItems, handleRemoveTodo, handleChecked }) {
+interface TodoListProps {
+    todoItems: TodoItem[],
+    handleRemoveTodo: (TodoItem: TodoItem) => void
+    handleChecked: (itemID: number, nextCheck: boolean) => void
+}
+
+function TodoLists({todoItems, handleRemoveTodo, handleChecked}: TodoListProps) {
     return (
         <ul className="todo-list">
                 {
-                    todoItems.map(todoItem => {
+                    todoItems?.map((todoItem: TodoItem) => {
                         return (
                             <li key={todoItem.id} className="todo-item">
                                 <input

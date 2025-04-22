@@ -1,13 +1,17 @@
-import {React, useState} from "react";
+import React, {useState} from "react";
 import "./TodoInput.css"
 
-function TodoInput({ handleTodoItems }) {
+interface TodoInputProps {
+    handleCreateTodo: (inputValue: string) => void
+}
+
+function TodoInput({ handleCreateTodo }: TodoInputProps) {
     const [inputValue, setInputValue] = useState('')
 
-    function handleSubmit(event) {
+    function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
         event.preventDefault()
         setInputValue('')
-        handleTodoItems(inputValue)
+        handleCreateTodo(inputValue)
     }
 
     return (

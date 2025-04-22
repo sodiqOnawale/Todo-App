@@ -1,4 +1,4 @@
-import { React, useState } from "react";
+import React, { useState } from "react";
 import "./TodoApp.css";
 import TodoInput from "../TodoInput/TodoInput";
 import TodoLists from "../TodoLists/TodoLists";
@@ -6,16 +6,22 @@ import TodoFooter from "../TodoFooter/TodoFooter";
 
 let nextId = 0;
 
+export interface TodoItem {
+    inputValue: string;
+    checked: boolean;
+    id: number;
+}
+
 function TodoApp() {
-    const [todoItems, setTodoItems] = useState(
-        JSON.parse(localStorage.getItem('items')) || []
+    const [todoItems, setTodoItems] = useState<TodoItem[]>(
+        JSON.parse(localStorage.getItem('items') || '[]')
     );
 
     const [isChecked, setIsChecked] = useState(
-        typeof JSON.parse(localStorage.getItem('isChecked')) === 'boolean' ? JSON.parse(localStorage.getItem('isChecked')) : null
+        typeof JSON.parse(localStorage.getItem('isChecked') || '[]') === 'boolean' ? JSON.parse(localStorage.getItem('isChecked') || '[]') : null
     );
 
-    function handleTodoItems(inputValue) {
+    function handleCreateTodo(inputValue: string) {
         if (inputValue) {
             setTodoItems([
                 ...todoItems,
@@ -25,6 +31,7 @@ function TodoApp() {
                     id: nextId++,
                 },
             ]);
+            console.log('todoitems>>', todoItems)
             localStorage.setItem('items', JSON.stringify(
                 [
                     ...todoItems,
@@ -38,13 +45,13 @@ function TodoApp() {
         }
     }
 
-    function handleRemoveTodo(todoItem) {
+    function handleRemoveTodo(todoItem: TodoItem) {
         const todo = todoItems.filter(currentTodoItem => currentTodoItem.id !== todoItem.id);
         setTodoItems(todo);
         localStorage.setItem('items', JSON.stringify(todo));      
     }
 
-    function handleChecked(itemID, nextCheck) {
+    function handleChecked(itemID: number, nextCheck: boolean) {
         setTodoItems(
             todoItems.map((todoItem) => {
                 if (todoItem.id === itemID) {
@@ -99,7 +106,7 @@ function TodoApp() {
             <header>
             <div>TODOS</div>
             </header>
-            <TodoInput handleTodoItems={handleTodoItems} />
+            <TodoInput handleCreateTodo={handleCreateTodo} />
             <TodoLists
                 todoItems={visibleTodos}
                 handleRemoveTodo={handleRemoveTodo}

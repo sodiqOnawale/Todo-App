@@ -1,6 +1,11 @@
 import React from "react";
 
-const DeleteTodoLogo = ({ size = 24, color = "#c74343" }) => (
+interface DeleteTodoLogoProps {
+  size?: number
+  color?: string
+}
+
+const DeleteTodoLogo = ({ size = 24, color = "#c74343" }: DeleteTodoLogoProps) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     width={size}
